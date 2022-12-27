@@ -1,0 +1,107 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{mathpazo}
+\usepackage{tikz}
+\usetikzlibrary{shapes}
+\oddsidemargin -0.54cm
+\textwidth 17.00cm
+\textheight 24cm
+\topmargin -1.3cm
+\parindent 0pt
+\parskip 1ex
+\pagestyle{empty}
+\begin{document}
+\medskip\hrule\medskip
+
+18 39 12 25 16 34 2 15 20 38 1 4 23 7 10 21 22 35 37 11 9 3 29 30 33 26 36 27 17 31 8 5 13 6 19 28 24 32 14 40 are inserted 
+
+In sorted order: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 
+
+Average depth = 4.350, size 40
+
+\begin{tikzpicture}[scale=0.425]
+\draw [help lines, color=green] (1,-16) grid (40,0);
+
+\draw [thick] (1,-6) node[draw, rounded rectangle] (0) {1};
+\draw [thick] (2,-4) node[draw, rounded rectangle] (1) {2};
+\draw [thick] (3,-8) node[draw, rounded rectangle] (2) {3};
+\draw [thick] (4,-6) node[draw, rounded rectangle] (3) {4};
+\draw [thick] (5,-10) node[draw, rounded rectangle] (4) {5};
+\draw [thick] (6,-12) node[draw, rounded rectangle] (5) {6};
+\draw [thick] (7,-8) node[draw, rounded rectangle] (6) {7};
+\draw [thick] (8,-14) node[draw, rounded rectangle] (7) {8};
+\draw [thick] (9,-12) node[draw, rounded rectangle] (8) {9};
+\draw [thick] (10,-10) node[draw, rounded rectangle] (9) {10};
+\draw [thick] (11,-12) node[draw, rounded rectangle] (10) {11};
+\draw [thick] (12,-2) node[draw, rounded rectangle] (11) {12};
+\draw [thick] (13,-8) node[draw, rounded rectangle] (12) {13};
+\draw [thick] (14,-10) node[draw, rounded rectangle] (13) {14};
+\draw [thick] (15,-6) node[draw, rounded rectangle] (14) {15};
+\draw [thick] (16,-4) node[draw, rounded rectangle] (15) {16};
+\draw [thick] (17,-6) node[draw, rounded rectangle] (16) {17};
+\draw [thick] (18,0) node[draw, rounded rectangle] (17) {18};
+\draw [thick] (19,-8) node[draw, rounded rectangle] (18) {19};
+\draw [thick] (20,-6) node[draw, rounded rectangle] (19) {20};
+\draw [thick] (21,-10) node[draw, rounded rectangle] (20) {21};
+\draw [thick] (22,-12) node[draw, rounded rectangle] (21) {22};
+\draw [thick] (23,-8) node[draw, rounded rectangle] (22) {23};
+\draw [thick] (24,-10) node[draw, rounded rectangle] (23) {24};
+\draw [thick] (25,-4) node[draw, rounded rectangle] (24) {25};
+\draw [thick] (26,-10) node[draw, rounded rectangle] (25) {26};
+\draw [thick] (27,-12) node[draw, rounded rectangle] (26) {27};
+\draw [thick] (28,-14) node[draw, rounded rectangle] (27) {28};
+\draw [thick] (29,-8) node[draw, rounded rectangle] (28) {29};
+\draw [thick] (30,-10) node[draw, rounded rectangle] (29) {30};
+\draw [thick] (31,-14) node[draw, rounded rectangle] (30) {31};
+\draw [thick] (32,-16) node[draw, rounded rectangle] (31) {32};
+\draw [thick] (33,-12) node[draw, rounded rectangle] (32) {33};
+\draw [thick] (34,-6) node[draw, rounded rectangle] (33) {34};
+\draw [thick] (35,-10) node[draw, rounded rectangle] (34) {35};
+\draw [thick] (36,-14) node[draw, rounded rectangle] (35) {36};
+\draw [thick] (37,-12) node[draw, rounded rectangle] (36) {37};
+\draw [thick] (38,-8) node[draw, rounded rectangle] (37) {38};
+\draw [thick] (39,-2) node[draw, rounded rectangle] (38) {39};
+\draw [thick] (40,-4) node[draw, rounded rectangle] (39) {40};
+\draw [->, thick] (1) to (0);
+\draw [->, thick] (1) to (3);
+\draw [->, thick] (3) to (2);
+\draw [->, thick] (3) to (6);
+\draw [->, thick] (4) to (5);
+\draw [->, thick] (6) to (4);
+\draw [->, thick] (6) to (9);
+\draw [->, thick] (8) to (7);
+\draw [->, thick] (9) to (8);
+\draw [->, thick] (9) to (10);
+\draw [->, thick] (11) to (1);
+\draw [->, thick] (11) to (15);
+\draw [->, thick] (12) to (13);
+\draw [->, thick] (14) to (12);
+\draw [->, thick] (15) to (14);
+\draw [->, thick] (15) to (16);
+\draw [->, thick] (17) to (11);
+\draw [->, thick] (17) to (38);
+\draw [->, thick] (19) to (18);
+\draw [->, thick] (19) to (22);
+\draw [->, thick] (20) to (21);
+\draw [->, thick] (22) to (20);
+\draw [->, thick] (22) to (23);
+\draw [->, thick] (24) to (19);
+\draw [->, thick] (24) to (33);
+\draw [->, thick] (25) to (26);
+\draw [->, thick] (26) to (27);
+\draw [->, thick] (28) to (25);
+\draw [->, thick] (28) to (29);
+\draw [->, thick] (29) to (32);
+\draw [->, thick] (30) to (31);
+\draw [->, thick] (32) to (30);
+\draw [->, thick] (33) to (28);
+\draw [->, thick] (33) to (37);
+\draw [->, thick] (34) to (36);
+\draw [->, thick] (36) to (35);
+\draw [->, thick] (37) to (34);
+\draw [->, thick] (38) to (24);
+\draw [->, thick] (38) to (39);
+
+\end{tikzpicture}
+
+\medskip\hrule\medskip
+\end{document}
