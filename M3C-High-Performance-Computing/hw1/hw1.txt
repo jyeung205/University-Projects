@@ -1,0 +1,15 @@
+vi hw1.txt
+
+
+commit eb9564d390571b1a6b664fc494a3b25fe20f7be7
+Author: Jimmy Yeung <kjy16@ic.ac.uk>
+Date:   Fri Nov 2 14:17:11 2018 +0000
+
+    complete
+
+commit b45f64011b2e2f97d99788e590dd13dc6041797e
+Author: Jimmy Yeung <kjy16@ic.ac.uk>
+Date:   Thu Nov 1 23:15:58 2018 +0000
+
+    question 1 complete
+
