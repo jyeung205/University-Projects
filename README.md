@@ -2,7 +2,7 @@
 
 M3SC Scientific Computation - Mathematics BSc at Imperial College London, 2019.
 
-Grade: 70
+Grade: 70 (First Class)
 
 ### Overview
 - Hw1: Searching Algorithms and Complexity Analysis
@@ -182,7 +182,7 @@ def analyze():
 
 M3C High Performance Computing - Mathematics BSc at Imperial College London, 2019.
 
-Grade: 73
+Grade: 73 (First Class)
 
 ### Overview:
 
@@ -329,7 +329,7 @@ def simulate(n,input_num=(10000,1e-8),input_mod=(1,1,1,2,1.5),display=True):
 ## Overview
 - MA407 Algorithms and Computation - Applicable Mathematics MSc at London School of Economics, 2020.
 - Task: To generate Latex code (which draws Binary Search Trees) using Java.
-- Grade: 100%
+- Grade: 100% (Highest Score in Cohort)
 
 ## Example
 Example of a Binary Search Tree drawn using using Latex. The Latex code was generated using Java.
