@@ -13,6 +13,169 @@ Grade: 70
 |:-----------------------:|:-------------------:|
 |![](https://github.com/jyeung205/University-Projects/blob/main/M3SC-Scientific-Computation/hw3/fig8.png)|![](https://github.com/jyeung205/University-Projects/blob/main/M3SC-Scientific-Computation/hw3/fig9.png)|
 
+<details>
+<summary> Code Snippets </summary>
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import odeint
+from scipy.signal import hann
+import scipy
+import time
+
+
+def nwave(alpha,beta,Nx=256,Nt=801,T=200,display=False):
+
+    #generate grid
+    L = 100
+    x = np.linspace(0,L,Nx+1)
+    x = x[:-1]
+
+    def RHS(f,t,alpha,beta):
+        """Computes dg/dt for model eqn.,
+        f[:N] = Real(g), f[N:] = Imag(g)
+        Called by odeint below
+        """
+        g = f[:Nx]+1j*f[Nx:]
+
+        #add code here
+        c = np.fft.fft(g)/Nx
+        n = np.fft.fftshift(np.arange(-Nx/2,Nx/2))
+        k = 2*np.pi*n/L
+        d2g = Nx*np.fft.ifft(-(k**2)*c)
+        #-----------
+        dgdt = alpha*d2g + g - beta*g*g*g.conj()
+        df = np.zeros(2*Nx)
+        df[:Nx] = dgdt.real
+        df[Nx:] = dgdt.imag
+        return df
+
+    #set initial condition
+    g0 = np.random.rand(Nx)*0.1*hann(Nx)
+    f0=np.zeros(2*Nx)
+    f0[:Nx]=g0
+    t = np.linspace(0,T,Nt)
+
+    #compute solution
+    f = odeint(RHS,f0,t,args=(alpha,beta))
+    g = f[:,:Nx] + 1j*f[:,Nx:]
+
+    if display:
+        plt.figure()
+        plt.contour(x,t,g.real)
+        plt.xlabel('x')
+        plt.ylabel('t')
+        plt.title('Contours of Real(g)')
+
+    return g
+
+
+def analyze():
+    Nx=256
+
+    #Nt
+    #caseA
+    n = np.arange(-Nx/2,Nx/2)
+    gA = nwave(1-2j,1+2j,Nt=801)
+    gA1 = nwave(1-2j,1+2j,Nt=200)
+    cA = np.fft.fft(gA[50:,])/Nx
+    cA1 = np.fft.fft(gA1[50:,])/Nx
+
+    plt.figure()
+    plt.plot(n,np.fft.fftshift(np.abs(cA[-1,])),'.')
+    plt.plot(n,np.fft.fftshift(np.abs(cA1[-1,])),'.')
+    plt.yscale("log")
+    plt.title('Jimmy Yeung \n analyze() \n Case A - Amplitude of Fourier Coefficients for difference values of Nt')
+    plt.xlabel('n')
+    plt.ylabel('Amplitude')
+    plt.legend(('Nt=801','Nt=200'))
+
+    #caseB
+    n = np.arange(-Nx/2,Nx/2)
+    gB = nwave(1-1j,1+2j,Nt=801)
+    gB1 = nwave(1-1j,1+2j,Nt=200)
+    cB = np.fft.fft(gB[50:,])/Nx
+    cB1 = np.fft.fft(gB1[50:,])/Nx
+
+    plt.figure()
+    plt.plot(n,np.fft.fftshift(np.abs(cB[-1,])),'.')
+    plt.plot(n,np.fft.fftshift(np.abs(cB1[-1,])),'.')
+    plt.yscale("log")
+    plt.title('Jimmy Yeung \n analyze() \n Case B - Amplitude of Fourier Coefficients for difference values of Nt')
+    plt.xlabel('n')
+    plt.ylabel('Amplitude')
+    plt.legend(('Nt=801','Nt=200'))
+
+    #Nx
+    #caseA
+    gA = nwave(1-2j,1+2j,Nx=256)
+    gA1 = nwave(1-2j,1+2j,Nx=100)
+    cA = np.fft.fft(gA[50:,])/100
+    cA1 = np.fft.fft(gA1[50:,])/100
+    n2 = np.arange(-100/2,100/2)
+
+    plt.figure()
+    plt.plot(n,np.fft.fftshift(np.abs(cA[-1,])),'.')
+    plt.plot(n2,np.fft.fftshift(np.abs(cA1[-1,])),'.')
+    plt.yscale("log")
+    plt.title('Jimmy Yeung \n analyze() \n Case A - Amplitude of Fourier Coefficients for difference values of Nx')
+    plt.xlabel('n')
+    plt.ylabel('Amplitude')
+    plt.legend(('Nx=256','Nx=100'))
+
+    #caseB
+    gA = nwave(1-1j,1+2j,Nx=256)
+    gA1 = nwave(1-1j,1+2j,Nx=100)
+    cA = np.fft.fft(gA[50:,])/100
+    cA1 = np.fft.fft(gA1[50:,])/100
+    n2 = np.arange(-100/2,100/2)
+
+    plt.figure()
+    plt.plot(n,np.fft.fftshift(np.abs(cA[-1,])),'.')
+    plt.plot(n2,np.fft.fftshift(np.abs(cA1[-1,])),'.')
+    plt.yscale("log")
+    plt.title('Jimmy Yeung \n analyze() \n Case B - Amplitude of Fourier Coefficients for difference values of Nx')
+    plt.xlabel('n')
+    plt.ylabel('Amplitude')
+    plt.legend(('Nx=256','Nx=100'))
+
+    #T
+    #caseA
+    gA = nwave(1-2j,1+2j,T=200)
+    gA1 = nwave(1-2j,1+2j,T=100)
+    cA = np.fft.fft(gA[50:,])/Nx
+    cA1 = np.fft.fft(gA1[50:,])/Nx
+
+    plt.figure()
+    plt.plot(n,np.fft.fftshift(np.abs(cA[-1,])),'.')
+    plt.plot(n,np.fft.fftshift(np.abs(cA1[-1,])),'.')
+    plt.yscale("log")
+    plt.title('Jimmy Yeung \n analyze() \n Case A - Amplitude of Fourier Coefficients for difference values of T')
+    plt.xlabel('n')
+    plt.ylabel('Amplitude')
+    plt.legend(('T=200','T=100'))
+
+    #caseB
+    gB = nwave(1-1j,1+2j,T=200)
+    gB1 = nwave(1-1j,1+2j,T=100)
+    cB = np.fft.fft(gA[50:,])/Nx
+    cB1 = np.fft.fft(gA1[50:,])/Nx
+
+    plt.figure()
+    plt.plot(n,np.fft.fftshift(np.abs(cB[-1,])),'.')
+    plt.plot(n,np.fft.fftshift(np.abs(cB1[-1,])),'.')
+    plt.yscale("log")
+    plt.title('Jimmy Yeung \n analyze() \n Case B - Amplitude of Fourier Coefficients for difference values of T')
+    plt.xlabel('n')
+    plt.ylabel('Amplitude')
+    plt.legend(('T=200','T=100'))
+
+    return None
+
+```
+</details>
+
 ---
 
 # M3C-High-Performance-Computing
@@ -32,6 +195,133 @@ Grade: 73
 |:-----------------------:|:-------------------:|
 |![](https://github.com/jyeung205/University-Projects/blob/main/M3C-High-Performance-Computing/hw4/part2/p31.png)|![](https://github.com/jyeung205/University-Projects/blob/main/M3C-High-Performance-Computing/hw3/hw322.png)|
 
+<details><summary>Code Snippets</summary>
+<p>
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from m1 import bmodel as bm #assumes p2.f90 has been compiled with: f2py3 -c p2.f90 -m m1
+import time
+from scipy import optimize
+
+def simulate_jacobi(n,input_num=(10000,1e-8),input_mod=(1,1,1,2,1.5),display=False):
+    #Set model parameters------
+
+    kmax,tol = input_num
+    g,k_bc,s0,r0,t0 = input_mod
+    #-------------------------------------------
+    #Set Numerical parameters
+    Del = np.pi/(n+1)
+    r = np.linspace(1,1+np.pi,n+2)
+    t = np.linspace(0,np.pi,n+2) #theta
+    tg,rg = np.meshgrid(t,r) # r-theta grid
+
+    #Factors used in update equation
+    rinv2 = 1.0/(rg*rg)
+    fac = 1.0/(2 + 2*rinv2+Del*Del*g)
+    facp = (1+0.5*Del/rg)*fac
+    facm = (1-0.5*Del/rg)*fac
+    fac2 = fac*rinv2
+
+    #set initial condition/boundary conditions
+    C = (np.sin(k_bc*tg)**2)*(np.pi+1.-rg)/np.pi
+
+    #set source function, Sdel2 = S*del^2*fac
+    Sdel2 = s0*np.exp(-20.*((rg-r0)**2+(tg-t0)**2))*(Del**2)*fac
+
+    deltac = []
+    Cnew = C.copy()
+
+    #Jacobi iteration
+    for k in range(kmax):
+        #Compute Cnew
+        Cnew[1:-1,1:-1] = Sdel2[1:-1,1:-1] + C[2:,1:-1]*facp[1:-1,1:-1] + C[:-2,1:-1]*facm[1:-1,1:-1] + (C[1:-1,:-2] + C[1:-1,2:])*fac2[1:-1,1:-1] #Jacobi update
+        #Compute delta_p
+        deltac += [np.max(np.abs(C-Cnew))]
+        C[1:-1,1:-1] = Cnew[1:-1,1:-1]
+        if k%1000==0: print("k,dcmax:",k,deltac[k])
+        #check for convergence
+        if deltac[k]<tol:
+            print("Converged,k=%d,dc_max=%28.16f " %(k,deltac[k]))
+            break
+
+    deltac = deltac[:k+1]
+
+    if display:
+        plt.figure()
+        plt.contour(t,r,C,50)
+        plt.xlabel('theta')
+        plt.ylabel('r')
+        plt.title('Final concentration field')
+
+    return C,deltac
+
+
+def simulate(n,input_num=(10000,1e-8),input_mod=(1,1,1,2,1.5),display=True):
+    """ Solve contamination model equations with
+        OSI method, input/output same as in simulate_jacobi above
+    """
+    #Set model parameters------
+
+    kmax,tol = input_num
+    g,k_bc,s0,r0,t0 = input_mod
+
+    #-------------------------------------------
+    #Set Numerical parameters
+    Del = np.pi/(n+1)
+    r = np.linspace(1,1+np.pi,n+2)
+    t = np.linspace(0,np.pi,n+2) #theta
+    tg,rg = np.meshgrid(t,r) # r-theta grid
+
+    #Factors used in update equation
+    rinv2 = 1.0/(rg*rg)
+    fac = 1.0/(2 + 2*rinv2+Del*Del*g)
+    facp = (1+0.5*Del/rg)*fac
+    facm = (1-0.5*Del/rg)*fac
+    fac2 = fac*rinv2
+
+    #set initial condition/boundary conditions
+    C = (np.sin(k_bc*tg)**2)*(np.pi+1.-rg)/np.pi
+
+    #set source function, Sdel2 = S*del^2*fac
+    Sdel2 = s0*np.exp(-20.*((rg-r0)**2+(tg-t0)**2))*(Del**2)*fac
+
+    deltac = []
+    Cnew = C.copy()
+
+    #Over-step iteration
+    for k in range(kmax):
+        for i in range(1,n+1):
+            for j in range(1,n+1):
+                Cnew[i,j] = -0.5*C[i,j] + 1.5*Sdel2[i,j] + 1.5*C[i+1,j]*facp[i,j] + 1.5*Cnew[i-1,j]*facm[i,j] + 1.5*(Cnew[i,j-1] + C[i,j+1])*fac2[i,j]
+        #Compute delta_p
+        deltac += [np.max(np.abs(C-Cnew))]
+        C[1:-1,1:-1] = Cnew[1:-1,1:-1]
+        if k%1000==0: print("k,dcmax:",k,deltac[k])
+        #check for convergence
+        if deltac[k]<tol:
+            print("Converged,k=%d,dc_max=%28.16f " %(k,deltac[k]))
+            break
+
+    deltac = deltac[:k+1]
+
+    if display:
+        plt.figure()
+        plt.contour(t,r,C,50)
+        plt.xlabel('theta')
+        plt.ylabel('r')
+        plt.title('Final concentration field')
+        plt.show()
+
+    #C,deltac = None,None #Must be replaced
+    return C,deltac
+
+```
+
+</p>
+</details>
+
 ---
 
 # MA407-Algorithms-And-Computation
@@ -46,7 +336,8 @@ Example of a Binary Search Tree drawn using using Latex. The Latex code was gene
 
 ![](https://github.com/jyeung205/University-Projects/blob/main/MA407-Algorithms-And-Computation/png/java%20Tree%2020%203-1.png?raw=true)
 
-## Code Snippets
+<details>
+<summary> Code Snippets </summary>
 
 ```java
 
@@ -347,4 +638,6 @@ public class Graph {
 
     }
 }
-```                                
+```   
+
+</details>                             
