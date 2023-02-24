@@ -329,7 +329,7 @@ def simulate(n,input_num=(10000,1e-8),input_mod=(1,1,1,2,1.5),display=True):
 ## Overview
 - MA407 Algorithms and Computation - Applicable Mathematics MSc at London School of Economics, 2020.
 - Task: To generate Latex code (which draws Binary Search Trees) using Java.
-- Grade: 100% (Highest Score in Cohort)
+- Grade: 100% (Top Score in Cohort)
 
 ## Example
 Example of a Binary Search Tree drawn using using Latex. The Latex code was generated using Java.
@@ -639,5 +639,10 @@ public class Graph {
     }
 }
 ```   
+</details>  
 
-</details>                             
+# M3A29 Theory of Complex Systems - Mathematics BSc at Imperial College London, 2019.
+
+|![](https://github.com/jyeung205/University-Projects/blob/main/M3A29 Theory of Complex Systems/cw1/fig1.png)|![](https://github.com/jyeung205/University-Projects/blob/main/M3A29 Theory of Complex Systems/cw1/fig3.png)|
+|:-----------------------:|:-------------------:|
+|![](https://github.com/jyeung205/University-Projects/blob/main/M3A29 Theory of Complex Systems/cw1/fig2.png)|![](https://github.com/jyeung205/University-Projects/blob/main/M3A29 Theory of Complex Systems/cw2/fig1.png)|
