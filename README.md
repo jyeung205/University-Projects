@@ -641,8 +641,10 @@ public class Graph {
 ```   
 </details>  
 
-# M3A29 Theory of Complex Systems - Mathematics BSc at Imperial College London, 2019.
+# M3A29 Theory of Complex Systems 
 
-|![](https://github.com/jyeung205/University-Projects/blob/main/M3A29 Theory of Complex Systems/cw1/fig1.png)|![](https://github.com/jyeung205/University-Projects/blob/main/M3A29 Theory of Complex Systems/cw1/fig3.png)|
+M3A29 Theory of Complex Systems - Mathematics BSc at Imperial College London, 2019.
+
+|![](https://github.com/jyeung205/University-Projects/blob/main/M3A29%20Theory%20of%20Complex%20Systems/cw1/fig1.png)|![](https://github.com/jyeung205/University-Projects/blob/main/M3A29%20Theory%20of%20Complex%20Systems/cw1/fig3.png)|
 |:-----------------------:|:-------------------:|
-|![](https://github.com/jyeung205/University-Projects/blob/main/M3A29 Theory of Complex Systems/cw1/fig2.png)|![](https://github.com/jyeung205/University-Projects/blob/main/M3A29 Theory of Complex Systems/cw2/fig1.png)|
+|![](https://github.com/jyeung205/University-Projects/blob/main/M3A29%20Theory%20of%20Complex%20Systems/cw1/fig1.png)|![](https://github.com/jyeung205/University-Projects/blob/main/M3A29%20Theory%20of%20Complex%20Systems/cw2/fig1.png)|
