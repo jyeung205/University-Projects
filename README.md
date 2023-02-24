@@ -655,5 +655,5 @@ M3A29 Theory of Complex Systems - Mathematics BSc at Imperial College London, 20
 
 |![](https://github.com/jyeung205/University-Projects/blob/main/MA407-Algorithmic-Techniques-for-Data-Mining/figures/correlogram.png)|![](https://github.com/jyeung205/University-Projects/blob/main/MA407-Algorithmic-Techniques-for-Data-Mining/figures/rocs_comparison.png)|
 |:-----------------------:|:-------------------:|
-|![](https://github.com/jyeung205/University-Projects/blob/main//MA407-Algorithmic-Techniques-for-Data-Mining/figures/DataVisualisation.png)|
+|![](https://github.com/jyeung205/University-Projects/blob/main//MA407-Algorithmic-Techniques-for-Data-Mining/figures/DataVisualisation.png)|![](https://github.com/jyeung205/University-Projects/blob/main//MA407-Algorithmic-Techniques-for-Data-Mining/figures/DataVisualisation.png)|
 
